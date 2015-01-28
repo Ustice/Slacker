@@ -14,28 +14,36 @@
     "github": "https://github.com/chris--young",
     "email": "cyoung@mobiquityinc.com"
   },
-  "contributors": [
-    {
-      "name": "Jason Kleinberg",
-      "github": "https://github.com/Ustice",
-      "email": "ustice@gmail.com"
-    },
-    {
-      "name": "Firoze Rakib",
-      "github": "https://github.com/firoze",
-      "email": "frakib@mobiquityinc.com"
-    },
-    {
-      "name": "Andrew Crites",
-      "github": "https://github.com/ajcrites",
-      "email": "acrites@mobiquityinc.com"
-    }
-  ],
+  "contributors": [{
+    "name": "Jason Kleinberg",
+    "github": "https://github.com/Ustice",
+    "email": "ustice@gmail.com"
+  }, {
+    "name": "Firoze Rakib",
+    "github": "https://github.com/firoze",
+    "email": "frakib@mobiquityinc.com"
+  }, {
+    "name": "Andrew Crites",
+    "github": "https://github.com/ajcrites",
+    "email": "acrites@mobiquityinc.com"
+  }, {
+    "name": "Raj",
+    "github": "https://github.com/nraomobiquityinc",
+    "email": "nrao@mobiquityinc.com"
+  }],
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.10.2",
+    "consolidate": "^0.10.0",
+    "domain": "0.0.1",
+    "express": "^4.11.1",
+    "handlebars": "^2.0.0",
+    "jquerygo": "0.0.16",
     "lodash": "~2.4.1",
+    "redis": "0.12.1",
+    "slack-api": "^0.1.11",
     "slack-node": "0.0.9",
-    "jquerygo": "0.0.16"
+    "superagent": "0.21.0"
   },
   "devDependencies": {
     "mocha": "~1.20.1"

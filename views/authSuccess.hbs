@@ -1,0 +1,59 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank you!</title>
+
+  <link href="css/authSuccess.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+  <div class="container theme-showcase" role="main">
+    <div class="page-header">
+      <h2>Thank you for authorizing us, {{userName}}!</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <h4>We can now run your queued actions for you.</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <form id="queuedActionsForm" action="/{{userId}}/runactions" method="POST">
+          <table class="table table-striped table-bordered">
+            <tr class="titleRow">
+              <td>Run</td>
+              <td>Action name</td>
+              <td>Time Requested</td>
+            </tr>
+            {{#each actionsList}}
+            <tr>
+              <td>
+                <input type="checkbox" name="{{@index}}-command" id="{{@index}}-command" checked/>
+              </td>
+              <td>
+                <span class="cmd">{{this.data.command.name}}</span>
+              </td>
+              <td>{{this.timeStamp}}</td>
+            </tr>
+            {{/each}}
+          </table>
+          <div class="alert alert-info" role="alert">
+            You may choose which actions you wish to run. Unchecked items will not be run but will be deleted instead.
+            <p>
+          </div>
+          <button type="submit" id="submitButton" class="btn btn btn-primary">Run!</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="js/authSuccess.js"></script>
+</body>
+<html>

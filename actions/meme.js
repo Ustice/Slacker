@@ -16,13 +16,15 @@ var action = {
       if (error)
         throw error
 
-      action.memes = data.toString().replace(/ /g, '+').split(',') 
+      action.memes = data.toString().replace(/ /g, '+').split(',')
     })
   },
 
   execute: function(data, callback) {
-    var memeQuery = data.text.split(' ')[1]
+    var memeName = data.text.split(' ')[1]
     var caption = data.text.substring(data.text.indexOf('\"') + 1, data.text.length - 1).replace(/\"/g, '').split(' ')
+    if (caption.length != 2)
+      return callback("You must supply two captions for your meme");
 
     if (!this.memes.length)
       return callback('memes.csv has not loaded yet, try again.')
@@ -30,11 +32,11 @@ var action = {
     var meme
     var x = -1
     while (!meme && ++x < this.memes.length - 1)
-      if (~this.memes[x].toLowerCase().indexOf(memeQuery.toLowerCase()))
+      if (~this.memes[x].toLowerCase().indexOf(memeName.toLowerCase()))
         meme = this.memes[x]
 
     if (!meme)
-      return callback('Meme \"' + memeQuery + '\" not found.')
+      return callback('Meme \"' + memeName + '\" not found.')
 
     callback('http://apimeme.com/meme?meme=' + meme + '&top=' + caption[0] + '&bottom=' + caption[1])
   }

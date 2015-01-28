@@ -1,0 +1,14 @@
+tr.titleRow{
+    font-weight:bold;
+}
+
+span.cmd{
+    font-family: Monaco,Menlo,Consolas,"Courier New",monospace;;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    font-size: .72rem;
+    white-space: normal;
+    color: #c25;
+    padding: 1px 3px;
+    font-size: 14px;
+}

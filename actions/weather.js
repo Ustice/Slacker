@@ -7,7 +7,7 @@ var action = {
 
     description: "Display weather based on City or ZIP",
 
-    helpText: "Get weather from openweathermap.org by Zip or City and State + \n" + 
+    helpText: "Get weather from openweathermap.org by Zip or City and State + \n" +
         "```" + "/slacker weather \"19102\" \n /slacker weather \"Philadelphia, PA\"" +  "```",
 
     execute: function(data, callback) {
@@ -42,7 +42,7 @@ var action = {
                         var temp_f = ((temp_c * (9/5)) + 32).toFixed(2);;
                         var humidity = main.humidity;
                         var weather = weather_list_item.weather;
-                        var forecast_str = "Forcast:\n";
+                        var forecast_str = "Forecast:\n";
                         for (var i = 0; i < weather.length; i++) {
                             var w_main = weather[i].main;
                             var w_icon = weather[i].icon;

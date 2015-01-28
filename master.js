@@ -21,8 +21,8 @@ if (cluster.isMaster) {
       cluster.fork()
 
     cluster.on('exit', function(worker, code, signal) {
-      log.error('worker' + worker.process.pid + ' exited', code || signal )
-      if (code !== -1)
+      log.error('worker' + worker.process.pid + ' exited', code || signal)
+      if (code !== config.BOT_START_FAILED)
         cluster.fork()
     });
 
@@ -30,7 +30,6 @@ if (cluster.isMaster) {
       log.info('worker' + worker.process.pid + ' came online')
     })
   })
-}
-else {
-  worker()
+} else {
+  worker.start();
 }
