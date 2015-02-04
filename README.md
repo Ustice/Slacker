@@ -13,6 +13,8 @@
 
   Slacker processes Slack Slash Command requests and executes pre-defined actions before responding to Slack. It deals with the networking aspects of your bot so you can focus on functionality.
 
+  Slacker is a node-based application and uses MongoDB for persisting user authentication-related data.
+
 ## Setup
 
   1. Clone this repository.
@@ -23,7 +25,9 @@
 
   2. Install [Node.js](http://node.js).
 
-  3. Set Slack Integrations.
+  3. Install [MongoDB](https://www.mongodb.org/), create a Mongo database and start the mongo server. Make a note of the connection string as this will have to be set in the `mongoConnectionString` property in the `config.json` file as outlined below.
+
+  4. Set Slack Integrations.
 
     * Create a Slash Command integration in Slack and point it to your instance of Slacker.
 
@@ -33,11 +37,12 @@
 
     * Get your admin user token. The easiest way is to use the (API explorer)[https://api.slack.com/methods/emoji.list/test], and grab it off the url.
 
-  4. Create a `config.json` file. Note that a `sample-config.json` is included in this package. You can simply copy this, and replace the two token values with the tokens that you noted above.
+  5. Create a `config.json` file in the project root folder. Note that a `sample-config.json` is included in this package. You can simply copy this, and replace the two token values with the tokens that you noted above.
 
   ````json
   {
     "port": 80,
+    "mongoConnectionString": "[Enter your MongoDB connection string in the format mongodb://user:password@mongohost:mongoport/dbname]",
     "logs": "logs",
     "token": {
       "slashCommand": "[Enter your Slash Command token here.]",
@@ -47,7 +52,7 @@
   }
   ````
 
-  5. Start Slacker.
+  6. Start Slacker.
 
     ````
     ➜ ~ sh Slacker
@@ -166,7 +171,7 @@
 
 #### Execute
 
-  Slacker calls the `execute()` method when a request requires that your action be performed. It receives a `data` parameter with relavent request information, and a `callback` paramature that must return a string which will be the bot's response in Slack. This method is required on all actions.
+  Slacker calls the `execute()` method when a request requires that your action be performed. It receives a `data` parameter with relavent request information, and a `callback` parameter that must return a string which will be the bot's response in Slack. This method is required on all actions.
 
 ##### The `data` Object
 
@@ -189,7 +194,8 @@
       "pipe": false,
       "redirectTo": []
     },
-    "pipedResponse": null
+    "pipedResponse": null,
+    "request_id": "BE2839D2-2958-4C5A-AD86-621F3EBC1746"
   }
   ````
 
@@ -206,3 +212,4 @@
   ````
   ➜ ~ npm test
   ````
+

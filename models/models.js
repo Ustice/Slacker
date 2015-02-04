@@ -3,7 +3,7 @@ var log = require(__dirname + '/../library/log.js')
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-mongoose.connect(config.mongoUrl, function(err, res) {
+mongoose.connect(config.mongoDbConnectionString, function(err, res) {
   if (err) {
     log.error('failed to connect to MongoDB');
     console.log('failed to connect to MongoDB');
